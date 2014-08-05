@@ -6,3 +6,4 @@ node_modules
 public/assets/css/*.css
 config.codekit
 public/.htaccess
+templates/helpers/analytics.js.twig
