@@ -1,4 +1,4 @@
-# Magic Banana
+# Tuupl
 
 ## About
 
