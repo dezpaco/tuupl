@@ -13,7 +13,7 @@ A few points to note:
 
 ## Setup
 
-    $ git clone https://github.com/dezpaco/tuupl.git
+    $ git clone git@github.com:dezpaco/tuupl.git
     $ cd tuupl
     $ make install
 
