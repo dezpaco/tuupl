@@ -1,0 +1,44 @@
+/*  
+++++++++++++++++++++++ 
++++ LAYOUT: RESETS +++ 
+++++++++++++++++++++++
+*/
+
+
+//=======================================
+// Layout
+//=======================================
+
+menu, dl, ol, ul {
+    padding: 0;
+}
+
+fieldset, table, pre {
+    margin-bottom: 0;
+}
+        
+ul, ol, dl {
+    margin: 0;
+}
+            
+ul li {
+    list-style: none;
+}
+
+// Android 2-3 animation not properly supported
+.touch.no-webgl * {
+    -webkit-animation: none !important;
+}
+
+body {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6, p { 
+    margin: 0;
+}
+
+blockquote {
+    margin: 0;
+    position: relative;
+}

@@ -1,0 +1,12 @@
+/*  
++++++++++++++++++ 
++++ CORE IE 8 +++ 
++++++++++++++++++
+*/
+
+
+$is-ie: true;
+$ie-version: 8;
+$use-mq: false;
+
+@import '_core--base.scss';

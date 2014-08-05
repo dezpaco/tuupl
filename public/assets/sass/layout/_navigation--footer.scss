@@ -1,0 +1,68 @@
+/*  
++++++++++++++++++++++++++++++++++
++++ LAYOUT: NAVIGATION FOOTER +++ 
++++++++++++++++++++++++++++++++++
+*/
+
+
+/*
+---------------- 
+--- CONTENTS ---
+---------------- 
+
+    1.0 Common
+    2.0 Navigation
+                
+----------------
+----------------
+*/
+
+
+//=======================================
+// !01.0 Common 
+//=======================================
+
+.footer {
+    clear: both;
+    height: $footer-height-smalldevice;
+    margin-top: -$footer-height-smalldevice;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+
+    @include mq($min: $break-tablet) {
+        height: $footer-height-largedevice;
+        margin-top: -$footer-height-largedevice;
+    }
+    
+    @include mq($min: $break-medium) {
+        height: $footer-height;
+        margin-top: -$footer-height;
+    }
+}
+
+
+//=======================================
+// !02.0 Navigation 
+//=======================================
+
+.fnav-credits, .fnav-credits a {
+    color: tint($primary, 50%);
+}
+
+.fnav-credits {
+    font-size: font-size(12);
+    line-height: 1.2;
+    text-align: center;
+    
+    @include mq($min: $break-tablet) {
+        line-height: 24px;
+    }
+}
+
+.fnav-credits a {
+    &:hover {
+        text-decoration: underline;
+    }
+}

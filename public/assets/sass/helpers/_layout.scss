@@ -1,0 +1,82 @@
+/*  
++++++++++++++++++++++++ 
++++ HELPERS: LAYOUT +++ 
++++++++++++++++++++++++ 
+*/
+
+
+//=======================================
+// Break points
+//=======================================
+
+@function break-point($size) {
+    @return ($size / $base_em) + em;
+}
+
+
+//=======================================
+// Box sizing
+//=======================================
+
+@mixin box-sizing {
+    @each $prefix in -moz-box, -webkit-box, box {
+        #{$prefix}-sizing: border-box;
+    }
+}
+
+
+//=======================================
+// Media queries
+//=======================================
+
+@mixin mq($min: false, $max: false, $and: false) {
+    @if $use-mq == false {
+        @content;        
+    } @else {
+        @if $min and $and == false {
+            @media only screen and (min-width: break-point($min)) { @content };
+        }
+        
+        @if $min and $and {
+            @media only screen and (min-width: break-point($min)) and ($and) { @content };
+        }
+        
+        @if $max and $and == false {
+            @media only screen and (max-width: break-point($max)) { @content };
+        }
+                
+        @if $max and $and {
+            @media only screen and (max-width: break-point($max)) and ($and) { @content };
+        }
+    }
+}
+
+
+//=======================================
+// Page layout
+//=======================================
+
+%page-layout {
+    padding-left: 4%;
+    padding-right: 4%;
+
+    @include mq($min: $break-devicemid) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 76%; 
+    }
+
+    @include mq($min: $break-deviceupper) {
+        width: 68%; 
+    }
+
+    @include mq($min: $break-tablet) {
+        width: 66%;
+    }
+
+    @include mq($min: $break-medium) {
+        padding-left: 0;
+        padding-right: 0;
+        width: 684px;
+    }
+}

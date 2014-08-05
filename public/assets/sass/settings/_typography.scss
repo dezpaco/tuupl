@@ -1,0 +1,22 @@
+/*  
+++++++++++++++++++++++++++++ 
++++ SETTINGS: TYPOGRAPHY +++ 
+++++++++++++++++++++++++++++ 
+*/
+
+
+// Values for em calculation
+$base-em: 16;
+$base-unit: 13;
+$base-size: $base-unit / $base-em;
+
+// Fonts used in project
+$font-body: 'Open Sans', sans-serif;
+$font-header: 'Open Sans', sans-serif;
+$font-altheader: 'Montserrat', sans-serif;;
+
+$font-numeral: tahoma, arial, sans-serif;
+$font-code: 'Andale Mono', monospace;
+
+$font-picto: 'Octicons', sans-serif;
+$font-social: 'SSSocialRegular', sans-serif;

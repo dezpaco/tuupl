@@ -1,0 +1,59 @@
+/*
+++++++++++++++++++++++++++
++++ HELPERS: ANIMATION +++
+++++++++++++++++++++++++++
+*/
+
+
+//=======================================
+// Animation
+//=======================================
+
+// Can't find a way to escape the @ character with @each so doing the dirty way instead
+@mixin animation-keyframes($name) {
+    @-moz-keyframes #{$name} { @content };
+    @-ms-keyframes #{$name} { @content };
+    @-o-keyframes #{$name} { @content };
+    @-webkit-keyframes #{$name} { @content };
+    @keyframes #{$name} { @content };
+}
+
+@mixin animation-properties($name, $duration, $count, $timing, $delay: 0, $fill_mode: both, $direction: normal) {
+    @each $prefix in -webkit-animation, animation {
+        #{$prefix}-fill-mode: $fill_mode;
+        #{$prefix}-name: $name;
+        #{$prefix}-delay: $delay;
+        #{$prefix}-duration: $duration;
+        #{$prefix}-iteration-count: $count;
+        #{$prefix}-timing-function: $timing;
+        #{$prefix}-direction: $direction;
+    }
+}
+
+//=======================================
+// Movement
+//=======================================
+
+@mixin transition($properties, $duration, $transition) {
+    @each $prefix in -webkit-transition, transition {
+        #{$prefix}-property: $properties;
+        #{$prefix}-duration: $duration;
+        #{$prefix}-timing-function: $transition;
+    }
+}
+
+@mixin transform($property) {
+    @each $prefix in -webkit-transform, transform {
+        #{$prefix}: $property;
+    }
+}
+
+@mixin transform-origin($property) {
+    @each $prefix in -webkit-transform-origin, transform-origin {
+        #{$prefix}: $property;
+    }
+}
+
+%transition {
+    @include transition((background-color, box-shadow, border-color, color, opacity, text-shadow), 0.2s, ease);
+}

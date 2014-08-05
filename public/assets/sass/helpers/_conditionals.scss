@@ -1,0 +1,28 @@
+/*
++++++++++++++++++++++++++++++
++++ HELPERS: CONDITIONALS +++
++++++++++++++++++++++++++++++
+*/
+
+
+//=======================================
+// Browsers
+//=======================================
+
+@mixin ie($version) {
+    @if $is-ie and $ie-version == $version {
+        @content;
+    }
+}
+
+@mixin ie-lte($version) {
+    @if $is-ie and $ie-version <= $version {
+        @content;
+    }
+}
+
+@mixin is-ie {
+    @if $is-ie {
+        @content;
+    }
+}

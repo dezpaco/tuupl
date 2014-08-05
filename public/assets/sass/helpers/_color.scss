@@ -1,0 +1,43 @@
+/*
+++++++++++++++++++++++
++++ HELPERS: COLOR +++
+++++++++++++++++++++++
+*/
+
+
+//=======================================
+// Balance
+//=======================================
+
+/*
+ * Code modified from https://github.com/Team-Sass/toolkit
+ */
+
+@function tint($color, $amount) {
+    @return mix(toolkit-get('tint color'), $color, $amount);
+}
+
+@function shade($color, $amount) {
+    @return mix(toolkit-get('shade color'), $color, $amount);
+}
+
+
+//=======================================
+// Gradients
+//=======================================
+
+/*
+ * $colours should be a comma separated list
+ * $direction_old is from the origin e.g. `left top`
+ * $direction_new is to the end e.g. `to right bottom`
+ */
+@mixin linear-gradient($direction-old: left, $direction-new: to right, $colors: null) {
+    background-image: -webkit-linear-gradient($direction-old, $colors);
+    background-image: -webkit-linear-gradient($direction-new, $colors);
+    background-image: linear-gradient($direction-new, $colors);
+}
+
+@mixin radial-gradient($features: center center, $colors: null) {
+    background-image: -webkit-radial-gradient($features, $colors);
+    background-image: radial-gradient($features, $colors);
+}

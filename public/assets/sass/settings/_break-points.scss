@@ -1,0 +1,19 @@
+/*  
+++++++++++++++++++++++++++++++ 
++++ SETTINGS: BREAK POINTS +++ 
+++++++++++++++++++++++++++++++ 
+*/
+
+
+// Size is in px but not including units because of breakPoint @function calculation in media query @mixin
+
+$break-phone: 320;
+$break-devicemid: 480;
+$break-deviceupper: 620;
+$break-tablet: 748;
+$break-tabletupper: 800;
+$break-medium: 980;
+$break-intermediate: 1260;
+$break-sublarge: 1400;
+$break-large: 1580;
+$break-xlarge: 1800;

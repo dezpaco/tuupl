@@ -1,0 +1,158 @@
+/*  
++++++++++++++ 
++++ PRINT +++ 
++++++++++++++ 
+*/
+
+// Add all elements that need hiding on this line:
+
+.header, .footer, .pagination { 
+    display: none;
+}
+
+* {
+    color: #000 !important;
+    font-family: "Times New Roman", Times, serif !important;
+}
+
+* div {
+    float: none !important;  // Fixes the 'one-page' Firefox bug
+    display: block;
+    text-align: left;
+    border: none !important;
+    background: none !important;
+}
+
+// Add all divs that lead to the (and including) #content div:
+
+.wrapper {
+    margin: 0;
+}
+
+.content {
+    overflow: visible !important;  // Fixes the 'one-page' Firefox bug
+    margin: 27pt;
+    padding: 0;
+    width: 30pc;
+}
+        
+body {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 12pt !important;
+    line-height: 16pt !important;
+    color: #000 !important;
+    background-color: #FFF; 
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+a, a:link {
+    border: none !important; 
+    text-decoration: underline; 
+    font-weight: normal !important; 
+    font-family: "Times New Roman", Times, serif !important; 
+    line-height: 13.5pt !important; 
+    background: none !important;
+    margin-bottom: 13.5pt !important;
+}
+
+h1, h2, h3, h4 {
+    color: #000 !important;
+    font-family: "Times New Roman", Times, serif !important;
+    margin: 0 0 13.5pt 0;
+}
+
+h1 {
+    font-size: 30pt !important;
+    line-height: 36pt !important;
+} 
+
+h2, .h2, h2 a, .h2 a {
+    font-size: 21pt !important;
+    line-height: 24pt !important;
+} 
+
+h3 {
+    font-size: 16pt !important;
+    line-height: 20pt !important;
+} 
+
+h4 {
+    font-size: 14pt !important;
+    line-height: 16pt !important;
+} 
+
+p, ul li {
+    font-size: 12pt !important;
+    line-height: 16pt !important;
+    margin: 0 0 16pt 0;
+}
+
+li, table {
+    font-size: 1em;
+}
+
+p + p {
+    text-indent: 0;
+}
+
+.form_item {
+    margin-top: 16pt;
+    
+    &.first {
+        margin-top: 0;
+    }
+}
+
+img {
+    display: none;
+}
+
+ul, ol, dl {
+    margin-left: 8pt;
+}
+
+ol, ul, dl, fieldset, table, pre, form, img {
+    margin-bottom: 16pt;
+}
+
+ul li, ol li, dl li {
+    margin-bottom: 4pt;
+}
+
+ul li ul, ol li ol, dl li dl {
+    margin: 10pt 0 10pt 4pt;
+}
+
+li { 
+    border: none !important;
+}
+
+blockquote {
+    border-left-color: black;
+}
+
+input, textarea {
+    border-color: black;
+}
+
+// Kill the sticky-footer; it screws with the print styles in FF
+
+// Fixes the 'one-page' Firefox bug
+html, body, .wrapper { 
+    height: auto;
+    overflow: visible !important;
+    background: none;
+}
+
+// Fixes the 'one-page' Firefox bug
+body > .wrapper { 
+    height: auto;
+    overflow: visible !important;
+}
+
+.footer {
+    position: static;
+    display: none;
+}

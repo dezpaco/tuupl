@@ -1,0 +1,33 @@
+/*  
+++++++++++++++++++++++++++++++
++++ LAYOUT: CONTENT LAYOUT +++ 
+++++++++++++++++++++++++++++++
+*/
+
+
+.content {
+    @extend %clearfix-modern;
+    @extend %page-layout;
+    padding-bottom: $footer-height-smalldevice + ($gutter * 2);
+    position: relative;
+    z-index: 800;
+
+    @include mq($min: $break-deviceupper) {
+        padding-bottom: $footer-height-smalldevice + ($gutter * 3);
+    }
+
+    @include mq($min: $break-tablet) {
+        padding-bottom: $footer-height-largedevice + ($gutter * 4);
+    }
+
+    @include mq($min: $break-medium) {
+        padding-bottom: $footer-height + ($gutter * 4);
+        padding-left: $gutter * 2;
+        padding-right: $gutter * 2;
+    }
+}
+
+.content-align {
+    position: relative;
+    z-index: 9999;
+}

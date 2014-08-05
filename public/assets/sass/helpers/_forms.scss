@@ -1,0 +1,149 @@
+/*  
+++++++++++++++++++++++ 
++++ HELPERS: FORMS +++ 
+++++++++++++++++++++++
+*/
+
+
+%form-description {
+    color: $grey4;
+    font-size: font-size(13);
+    line-height: 1.2;
+    margin-top: .3em;
+    
+    @include mq($min: $break-tablet) {
+        padding-right: 40%;
+    }
+}
+
+%form-alert-message/*, .primary p.form-alert-message*/ {
+    @extend %form-description;
+    color: $red;
+}
+
+%form-item {
+    @extend %clearfix-modern;
+    margin-top: 1em;
+    
+    &.first {
+        margin-top: 0;
+    }
+    
+    &.form-actions {
+        margin-top: 2em;
+    }
+}
+
+%form-item-input {
+    @extend %transition;
+    @include box-sizing;
+    background-color: $greyE;
+    border: 2px solid shade($greyE, 6%);
+    border-radius: $border-radius;
+    box-shadow: inset 0 2px 2px shade($greyE, 4%);
+    font-size: font-size(15);
+    padding: 6px 8px;
+    width: 100%;
+    
+    &:focus {
+        background-color: shade($greyE, 8%);
+        border-color: $primary;
+        box-shadow: inset 0 2px 2px shade(shade($greyE, 8%), 4%);
+        outline: none;
+    }
+    
+    &.with-error, &.with-error:focus {
+        background-color: tint($red, 70%);
+        box-shadow: inset 0 2px 2px shade(tint($red, 70%), 4%);
+    }
+
+    &.with-error {
+        border-color: shade(tint($red, 70%), 6%);
+
+        &:focus {
+            border-color: $red;
+        }
+    }
+    
+    &.with-disabled, &.with-disabled:focus {
+        // Bg img below in @mixin
+        background-color: $greyF;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        border-color: shade($greyF, 6%);
+        box-shadow: none;
+        color: $grey8;
+    }
+    
+    @include mq($min: $break-medium) {
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        width: auto;
+    }
+}
+
+%form-item-label {
+    @extend %fontweight-heavy;
+    display: block;
+    font-size: font-size(14);
+    margin-bottom: .2em;
+    
+    &.inline {
+        display: inline;
+        font-size: font-size(15);
+        margin-left: .5em;
+    }
+}
+
+%form-item-preinput {
+    @extend %fontweight-heavy;
+    font-size: font-size(15);
+    padding-right: .5em;
+}
+
+// This is for file picker and select inputs
+%form-item-selection {
+    margin-top: .3em;
+}
+
+// form-item-option is for checkbox and radio inputs
+%form-item-option {
+    margin-left: 1.2em;
+}
+
+%form-item-submit {
+    @include btn();
+    box-shadow: none;
+    
+    &:focus {
+        @extend %form-item-submit:hover;
+        outline: none;
+    }
+    
+    @include mq($max: $break-tablet) {
+        @include box-sizing;
+        padding-bottom: 12px;
+        padding-top: 12px;
+    }
+
+    @include mq($min: $break-medium) {
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box; 
+    }
+}
+
+%form-item-error-message {
+    margin-top: .2em;
+}
+
+%required {
+    color: $red;
+}
+
+%required-message {
+    font-size: font-size(15);
+    font-style: inherit;
+    margin-top: 1em;
+}

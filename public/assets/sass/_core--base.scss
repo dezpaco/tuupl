@@ -1,0 +1,21 @@
+/*  
+++++++++++++++++++
++++ BASE: CORE +++ 
+++++++++++++++++++
+*/
+
+
+@import '_base';
+
+
+// RESETS
+@import 'layout/_normalize';
+@import 'layout/_resets';
+
+// VIEWS
+@import 'layout/_core';
+@import 'layout/_content--layout';
+@import 'layout/_navigation--header';
+@import 'layout/_navigation--footer';
+//@import 'layout/_primary';
+@import 'layout/_conversion';

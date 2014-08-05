@@ -1,0 +1,46 @@
+/*  
++++++++++++++++++++++++++++++++++
++++ LAYOUT: NAVIGATION HEADER +++ 
++++++++++++++++++++++++++++++++++
+*/
+
+
+.header {
+    @extend %clearfix-modern;
+    left: 50%;
+    margin-left: -72px;
+    position: absolute;
+    text-align: center;
+    top: $gutter;
+    width: 144px;
+    z-index: 999999;
+
+    @include mq($min: $break-devicemid) {
+        top: $gutter * 2; 
+    }
+
+    @include mq($min: $break-tablet) {
+        top: $gutter * 3; 
+    }
+
+    @if $use_mq {
+        @include mq($min: $break-large) {
+            top: $gutter * 5; 
+        }
+    }
+}
+
+/*a*/.logo-base {
+    @extend %font-altheader;
+    color: $tertiary;
+    display: block;
+    font-size: font-size(18);
+    letter-spacing: .5em;
+    text-transform: uppercase;
+}
+
+.strapline {
+    color: rgba($white, .5);
+    font-size: font-size(13);
+    //margin-top: .1em;
+}

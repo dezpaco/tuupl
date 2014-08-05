@@ -1,0 +1,38 @@
+/*  
++++++++++++++++++++++++++
++++ SETTINGS: TOOLKIT +++ 
++++++++++++++++++++++++++
+*/
+
+
+/*
+ * Code modified from https://github.com/Team-Sass/toolkit
+ */
+
+//=======================================
+// !01.0 DEFAULT SETTINGS
+//=======================================
+
+$Toolkit-Settings: (
+    'horizontal midpoint': 0%,
+    'horizontal fixed midpoint': 50%,
+    'horizontal fixed': false,
+    'horizontal extend': false,
+    'shade color': $grey0,
+    'tint color': $white,
+    'underline background': $white,
+    'underline color': $primary,
+    'underline clear descenders': true,
+    'underline distance': 1,
+    'underline width': 2,
+    'underline extend': false,
+    'vertical midpoint': 50%,
+    'vertical extend': false
+);
+
+
+//=======================================
+// !02.0 USER SETTINGS
+//=======================================
+
+$toolkit: () !default;

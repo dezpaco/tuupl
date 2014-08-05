@@ -1,0 +1,28 @@
+/*  
++++++++++++++++++++++++++ 
++++ HELPERS: CLEARFIX +++ 
++++++++++++++++++++++++++
+*/
+
+
+%clearfix-classic { 
+    clear: both;
+    height: 0; 
+    visibility: hidden; 
+}
+
+// More modern clear fix http://nicolasgallagher.com/micro-clearfix-hack/
+%clearfix-modern {
+    @extend %clearfix-display;
+    @extend %clearfix-clear;
+}
+
+%clearfix-display:after,
+    %clearfix-display:before {
+    content: "";
+    display: table;
+}
+
+%clearfix-clear:after {
+    clear: both;
+}

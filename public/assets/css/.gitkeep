@@ -1,0 +1,1 @@
+We don't need to commit the compiled CSS files to the repository. Storing compiled assets in a repo causes merge conflicts when it's done on different machines. It's also bad practice to do so because the compiled assets are generated from SASS source files that can be generated with a single command.

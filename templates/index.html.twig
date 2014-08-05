@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    
+    <div class="conversion">
+
+        <div id="viewer" class="conversion-window"></div>
+
+        <div class="conversion-values">
+
+            <form>
+                <label for="hex" class="conversion-label">Hex</label>
+                <input type="text" id="hex" class="conversion-input first" placeholder="Hex" autofocus="autofocus">
+                <label for="rgb" class="conversion-label">RGB</label>
+                <input type="text" id="rgb" class="conversion-input last" placeholder="RGB">
+            </form>
+
+        </div> <!-- End .conversion-values -->
+
+    </div> <!-- End .conversion -->
+
+{% endblock content %}
+
+{% block scripts_page %}
+    <script src="/assets/js/libs/jquery-1.11.1.min.js"></script>
+    <script src="/assets/js/site.js"></script>
+{% endblock %}

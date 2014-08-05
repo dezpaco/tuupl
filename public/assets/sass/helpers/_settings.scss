@@ -1,0 +1,74 @@
+/*  
++++++++++++++++++++++++++
++++ HELPERS: SETTINGS +++ 
++++++++++++++++++++++++++
+*/
+
+
+//=======================================
+// Has settings
+//=======================================
+
+@function toolkit-has($setting) {
+    @if map-has-key($toolkit, $setting) {
+        @return true;
+    }
+    @else {
+        @return false;
+    }
+}
+
+
+//=======================================
+// Get settings
+//=======================================
+
+@function toolkit-get($setting) {
+    @if toolkit-has($setting) {
+        @return map-get($toolkit, $setting);
+    }
+    @else {
+        @return map-get($Toolkit-Settings, $setting);
+    }
+}
+
+
+//=======================================
+// Set settings
+//=======================================
+
+@function toolkit-set($setting, $value) {
+    @if (str-index($setting, '-') or str-index($setting, '_')) and str-index($setting, ' ') == null {
+        @warn "Words in Singularity settings should be spaces, not dashes or underscores. Please replace dashes and underscores between words with spaces. Settings will not work as expected until changed.";
+    }
+    $toolkit: map-merge($toolkit, ($setting: $value)) !global;
+    @return true;
+}
+
+@mixin toolkit-change($setting, $value) {
+    $toolkit-change: toolkit-set($setting, $value);
+}
+
+@mixin toolkit-set($setting, $value) {
+    $toolkit-change: toolkit-set($setting, $value);
+}
+
+
+//=======================================
+// Remove setting
+//=======================================
+
+@function toolkit-reset($setting) {
+    $Return: ();
+
+    @each $Key, $Value in $toolkit {
+        $Return: if($setting == $Key, $Return, map-merge($Return, ($Key: $Value)));
+    }
+
+    $toolkit: $Return !global;
+    @return true;
+}
+
+@mixin toolkit-reset($setting) {
+    $toolkit-reset: toolkit-reset($setting);
+}

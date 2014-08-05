@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tuupl: Color space converter</title>
+    <link href="/assets/images/favicon.ico" rel="icon" type="image/x-icon" />
+    
+    <meta name="description" content="Color space converter for Hex and RGB." />
+    <meta property="og:site_name" content="Tuupl">
+    <meta property="og:description" content="Color space converter for Hex and RGB." />
+    <meta property="og:title" content="Tuupl" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://tuupl.com" />
+    <meta property="og:image" content="http://tuupl.com/assets/images/og-img.png" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@dezpaco">
+    {#<meta name="twitter:creator" content="@dezpaco">#}
+    <meta name="twitter:title" content="Tuupl">
+    <meta name="twitter:description" content="Color space converter for Hex and RGB.">
+    <meta name="twitter:image" content="http://tuupl.com/assets/images/og-img.png">
+    
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:400,600" rel="stylesheet">
+    <!--[if gte IE 9]><!-->
+        <link href="/assets/css/core.css" media="screen" rel="stylesheet"/>
+    <!--<![endif]-->
+    <link href="/assets/css/print.css" media="print" rel="stylesheet"/>
+    
+    {#
+     # These assets are for when you need something for a specific page
+     # but don't want every other page to load it.
+     #}
+    {% block assets_head_page %}{% endblock %}
+
+    <link href="/assets/images/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/assets/images/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+    <link href="/assets/images/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+    <link href="/assets/images/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+
+    <!--[if lte IE 7]>
+        <link href="/assets/css/core-ie7.css" media="screen" rel="stylesheet"/>
+    <![endif]-->
+    <!--[if IE 8]>
+        <link href="/assets/css/core-ie8.css" media="screen" rel="stylesheet"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+{% endblock head %}
+</head>
+
+<body{% if bodyId %} id="{{ bodyId }}"{% endif %}{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+  
+    <div class="wrapper">
+
+        {% block header %}
+        <header class="header" role="banner">
+
+            {% block logo %}
+            <a href="/" class="logo-base">Tuupl</a>
+            {% endblock %}
+            <p class="strapline">Color space converter</p>
+                                                                                                                                                    
+        </header> <!-- End .header -->
+        {% endblock header %}
+        
+        <div class="content" role="main">
+            <main class="content-align">
+            {% block content %}
+                
+                {% block primary %}
+                <div class="primary">
+                
+                    Shall we play a game?
+                
+                </div> <!-- End .primary -->
+                {% endblock primary %}
+            
+            {% endblock content %}
+            </main> <!-- End .content-align -->
+        </div> <!-- End .content -->
+        
+    </div> <!-- End .wrapper -->
+    
+    {% block footer %}  
+    <footer class="footer" role="contentinfo">
+     
+        <p class="fnav-credits">Tuupl: Made by <a href="http://derryhoyland.com" rel="external">Derry Lozano-Hoyland</a></p>
+
+    </footer> <!-- End .footer -->
+    {% endblock footer %}
+    
+    {#
+     # Site scripts are for sitewide assets, use scripts-page if only
+     # loading in individual page or module.
+     #}
+    {% block scripts_site %}
+        <!--[if gte IE 9]><!-->
+            <script class="mediaquerydependent" data-src="/assets/js/fastclick.min.js" data-media="screen and (max-width: 61.25em)"></script>
+            <script>
+                {# This script searches for <script> or <link> with .mediaquerydependent so it can conditionally load assets using matchMedia. Remember to check http://caniuse.com/matchmedia in case the assets are important for legacy browsers/devices. #}
+                (function(){
+                  var queries = document.
+                                querySelectorAll('.mediaquerydependent'),
+                      all = queries.length,
+                      cur = null,
+                      attr = null;
+                  while (all--) {
+                    cur = queries[all];
+                    if (cur.dataset.media &&
+                        window.matchMedia(cur.dataset.media).matches) {
+                      for (attr in cur.dataset) {
+                        if (attr !== 'media') {
+                          cur.setAttribute(attr, cur.dataset[attr]);
+                        }
+                      }
+                    }
+                  }
+                }());
+                
+                {# This will use fastclick.min.js to turn off the 300ms click delay on mobile browsers and therefore greatly speed up using the website (the device waits for a double click event but not necessary). 61.25em is roughly 980px ($break-medium). #}
+                if(window.matchMedia('screen and (max-width: 61.25em)').matches) {
+                    window.addEventListener('load', function() {
+                        FastClick.attach(document.body);
+                    }, false);          
+                }
+            </script>
+        <!--<![endif]-->
+    {% endblock scripts_site %}
+
+    {#
+     # These scripts are for when you need something for a specific page
+     # but don't want every other page to load it.
+     #}
+    {% block scripts_page %}{% endblock %}
+</body>
+</html>

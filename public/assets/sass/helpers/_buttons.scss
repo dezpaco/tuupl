@@ -1,0 +1,163 @@
+/*  
+++++++++++++++++++++++++ 
++++ HELPERS: BUTTONS +++ 
+++++++++++++++++++++++++ 
+*/
+
+
+//=======================================
+// Button
+//=======================================
+
+@mixin btn($background: $primary, $color: $white, $color_hover: $white, $extend: true, $large: null) {
+    @include btn-static($extend);
+
+    @if $large {
+        @include btn-large($extend);
+    }
+
+    @include text-shadow($background);
+    background-color: $background;
+    border-color: darken($background, 4%);
+    color: $color;
+    
+    &:hover {
+        border-color: darken(darken($background, 4%), 4%);
+        background-color: darken($background, 4%);
+        color: $color_hover;
+    }
+}
+
+// These styles don't change between instances so we're going to use SASS magic to keep them DRY
+@mixin btn-static($extend: true) {
+    $btn-selector: map-get($Private-Toolkit-Placeholders, 'btn');
+
+    @if $extend == true {
+        @include dynamic-extend('btn') {
+            @include btn-static(false);
+        }
+    }
+
+    @else {
+        @include transition((background-color, box-shadow, border-color, color, opacity, text-shadow), 0.2s, ease);
+        border-style: solid;
+        border-width: 1px;
+        border-bottom-width: 2px;
+        border-radius: $border-radius;
+        display: block;
+        font-size: font-size(16);
+        font-weight: 600;
+        line-height: 1.2;
+        padding: 16px;
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        @include mq($min: $break-deviceupper) {
+            display: inline-block;
+        }
+        
+        @include mq($min: $break-tablet) {
+            font-size: font-size(15);
+            padding: 6px 10px;
+        }
+    }
+}
+
+
+//=======================================
+// Large button
+//=======================================
+
+@mixin btn-large($extend: true) {
+    $btn-selector: map-get($Private-Toolkit-Placeholders, 'btn-large');
+
+        @if $extend == true {
+            @include dynamic-extend('btn-large') {
+                @include btn-large(false);
+            }
+        }
+
+        @else {
+            padding: 16px;
+
+            @include mq($min: $break-tablet) {
+                font-size: font-size(18);
+                padding: 8px 16px;
+            }
+        } 
+}
+
+
+//=======================================
+// Background of button (only)
+//=======================================
+
+// This mixin is just for styling a background for a button
+@mixin btn-bg($colour, $extend: true) {
+    @include btn-bg-static($extend);
+    background-color: $colour;
+    border: 1px solid darken($colour, 4%);
+    
+    &:hover {
+        background-color: darken($colour, 4%);
+        border-color: darken(darken($colour, 4%), 4%);
+    } 
+}
+
+@mixin btn-bg-static($extend: true) {
+    $btn-selector: map-get($Private-Toolkit-Placeholders, 'btn-bg');
+
+    @if $extend == true {
+        @include dynamic-extend('btn-bg') {
+            @include btn-bg-static(false);
+        }
+    }
+
+    @else {
+        @include transition((background-color, box-shadow, border-color, color, opacity, text-shadow), 0.2s, ease);
+    }
+}
+
+%btn-bg-email {
+    @include btn-bg($primary);   
+}
+
+%btn-bg-facebook {
+    @include btn-bg($facebook);  
+}
+
+%btn-bg-flickr {
+    @include btn-bg($flickr);    
+}
+
+%btn-bg-googleplus {
+    @include btn-bg($googleplus);    
+}
+
+%btn-bg-linkedin {
+    @include btn-bg($linkedin);  
+}
+
+%btn-bg-pinterest {
+    @include btn-bg($pinterest);  
+}
+
+%btn-bg-tumblr {
+    @include btn-bg($tumblr);   
+}
+
+%btn-bg-twitter {
+    @include btn-bg($twitter);   
+}
+
+%btn-bg-vimeo {
+    @include btn-bg($vimeo); 
+}
+
+%btn-bg-youtube {
+    @include btn-bg($youtube);   
+}

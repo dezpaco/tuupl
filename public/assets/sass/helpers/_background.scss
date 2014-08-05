@@ -1,0 +1,40 @@
+/*
++++++++++++++++++++++++++++
++++ HELPERS: BACKGROUND +++
++++++++++++++++++++++++++++
+*/
+
+
+@mixin background-size($properties) {
+    @each $prefix in -webkit-background-size, background-size {
+        #{$prefix}: $properties;
+    }
+}
+
+// Background-size can be better than svg because sprites can get too large a file size from the complexity.
+// Using the @mixin backgroundSize a .png @2x is halved in size to get better pixel density for hi-res
+.no-backgroundsize %sprite-master, 
+    .no-js %sprite-master {
+        background-image: $sprite-master;
+        background-repeat: no-repeat;
+    }
+
+.backgroundsize %sprite-master {
+    @include background-size($sprite-master);
+    background-image: $sprite-master2x;
+    background-repeat: no-repeat;
+}
+
+// For vector background images with png fallback
+// Need to add Modernizr test for SVG's for this to work
+@mixin vector-bg($selector, $image) {
+    #{$selector} {
+        background-image: url("../images/#{$image}.svg");
+    }
+
+    .no-svg {
+        #{$selector} {
+            background-image: url("../images/#{$image}.png");
+        }
+    }
+}
