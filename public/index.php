@@ -15,7 +15,7 @@ $twig = new Twig_Environment($loader);
 
 $routes = array(
 	'/' => array('index', array('bodyId' => 'home')),
-    '/error' => array('error', array('bodyId' => 'notfound'))
+    '/notfound' => array('notfound', array('bodyId' => 'notfound'))
 );
 
 $view = $routes[$_SERVER['REQUEST_URI']];
