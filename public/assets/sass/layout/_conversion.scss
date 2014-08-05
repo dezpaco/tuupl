@@ -68,6 +68,7 @@
         @include box-sizing;
         border-bottom: 2px solid $greyE;
         border-left: none;
+        border-radius: 0; // Override iOS Safari's rounded corners
         border-right: none;
         border-top: none;
         font-size: font-size(14);
