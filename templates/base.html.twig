@@ -101,7 +101,7 @@
         <!--[if gte IE 9]><!-->
             <script class="mediaquerydependent" data-src="/assets/js/fastclick.min.js" data-media="screen and (max-width: 61.25em)"></script>
             <script>
-                {# This script searches for <script> or <link> with .mediaquerydependent so it can conditionally load assets using matchMedia. Remember to check http://caniuse.com/matchmedia in case the assets are important for legacy browsers/devices. #}
+                /* This script searches for <script> or <link> with .mediaquerydependent so it can conditionally load assets using matchMedia. */
                 (function(){
                   var queries = document.
                                 querySelectorAll('.mediaquerydependent'),
@@ -121,7 +121,7 @@
                   }
                 }());
                 
-                {# This will use fastclick.min.js to turn off the 300ms click delay on mobile browsers and therefore greatly speed up using the website (the device waits for a double click event but not necessary). 61.25em is roughly 980px ($break-medium). #}
+                /* This will use fastclick.min.js to turn off the 300ms click delay on mobile browsers and therefore greatly speed up using the website (the device waits for a double click event but not necessary). 61.25em is roughly 980px ($break-medium). */
                 if(window.matchMedia('screen and (max-width: 61.25em)').matches) {
                     window.addEventListener('load', function() {
                         FastClick.attach(document.body);
@@ -141,6 +141,5 @@
      # This file is ignored in the repo.
      #}
     {% include 'helpers/analytics.js.twig' %}
-    }
 </body>
 </html>
