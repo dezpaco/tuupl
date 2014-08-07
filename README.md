@@ -63,8 +63,7 @@ Install Gulp dependencies. Run this command from the root of the project directo
 
 ## Issues/To fix
 
-* Doesn’t cause any problems but bug in RGB regex where you can add unlimited numbers to the third group e.g. 232,232,2323232323. Need to keep the RGBa syntax with a fourth group so fixing this is tricky without creating a more complex regex system
 * Should the Hex code change to the correct format `#XXXXXX` immediately after entering? Would this introduce bugs for slow typers. Is it odd that the format changes after going into the RGB input and back to Hex?
 * Haven’t added any animations on pageLoad to speed things up. Does the app need it?
 * The css letter spacing of the logotype is a bit off-center. Dodgy!
-* Move the project to Backbone Marionette! Get rid of the hack-y js used at the moment
+* Move the project to Backbone Marionette?
