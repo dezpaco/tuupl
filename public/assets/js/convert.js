@@ -1,5 +1,18 @@
 (function() {
     
+    /*
+     * isHex checks for both 3-value and 6-value Hex codes.
+     */
+    var isHex = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
+    /*
+     * rgbPattern will ignore the rgba(,0.2); part of the code
+     * and will also check if values 0-255.
+     * Bug in rgbPattern where it will pass if you set:
+     * 01,01,02 - does this matter?
+     * 12,34,5 6 passes as 12,34,5
+     */
+    isRgb = /^[rgba]*\(?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b/;
+
     var Convert = {
 
         init: function() {
@@ -59,27 +72,13 @@
          * Test if the value entered is a valid Hex color code.
          */
         evalHex: function() {
-            /*
-             * hexPattern checks for both 3-value and 6-value Hex codes.
-             */
-            var isHex = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-
             return isHex.test( this.readHex() ) ? this.convertHex() : void 0;
         },
 
         /*
          * Test if the value entered is a valid RGB color code.
          */
-        evalRgb: function() {
-            /*
-             * rgbPattern will ignore the rgba(,0.2); part of the code
-             * and will also check if values 0-255.
-             * Bug in rgbPattern where it will pass if you set:
-             * 01,01,02 - does this matter?
-             * 12,34,5 6 passes as 12,34,5
-             */
-            var isRgb = /^[rgba]*\(?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b/;
-            
+        evalRgb: function() {            
             return isRgb.test( this.readRgb() ) ? this.convertRgb() : void 0;
         },
 
@@ -114,7 +113,7 @@
 
         /*
          * If evalRgb() verifies input as RGB then convert to a Hex color code.
-         * splitRgb will take the rgb string and create an array of numbers.
+         * splitRgb will take the RGB string and create an array of numbers.
          * << is the bitwise left shift operator.
          * g << 8 therefore effectively multiplies g by 256,
          * adding two zeroes to the end of its Hex representation.
@@ -123,8 +122,7 @@
          * zeroes once the leading 1 is stripped off using slice().
          */
         convertRgb: function() {
-            var rgbPattern = /^[rgba]*\(?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b/,
-                splitRgb = rgbPattern.exec( this.readRgb() ).map( this.returnInt ),
+            var splitRgb = isRgb.exec( this.readRgb() ).map( this.returnInt ),
                 r = splitRgb[1],
                 g = splitRgb[2],
                 b = splitRgb[3];
