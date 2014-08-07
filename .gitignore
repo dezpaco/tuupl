@@ -7,3 +7,4 @@ public/assets/css/*.css
 config.codekit
 public/.htaccess
 templates/helpers/analytics.js.twig
+public/assets/js/convert.min.js
