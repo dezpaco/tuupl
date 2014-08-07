@@ -41,10 +41,6 @@
             this.viewer.css( 'background-color', this.evalHex() );
         },
 
-        peekValue: function() {
-            this.viewer.text( this.readHex() );
-        },
-
         /*
          * Output the value typed into the Hex input element.
          */
