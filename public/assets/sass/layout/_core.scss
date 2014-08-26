@@ -23,7 +23,7 @@ body, .wrapper {
 }
 
 .wrapper {
-    @include linear-gradient($direction-old: left top, $direction-new: to right top, $colors: ($primary, $lilac));
+    //@include linear-gradient($direction-old: left top, $direction-new: to right top, $colors: ($primary, $lilac));
     background-color: $primary; 
     min-height: 100%;
     overflow: hidden; // For .content:after white bg
