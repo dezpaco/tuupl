@@ -2,9 +2,9 @@
 
 $ignore = array('/', '/templates');
 
-if ( ! in_array($_SERVER['REQUEST_URI'], $ignore) 
+if ( ! in_array($_SERVER['REQUEST_URI'], $ignore)
 	&& file_exists(__DIR__ . $_SERVER['REQUEST_URI'])) {
-	
+
 	return false;
 }
 
@@ -26,6 +26,12 @@ if (is_array($view)) {
 else {
 	$data = array();
 }
+
+/*
+ * Using HTTP_HOST without verifying what you get is not a good
+ * idea for a production environment!
+ */
+$data['url'] = $_SERVER['HTTP_HOST'];
 
 if (file_exists(__DIR__ . '/../templates/' . $view . '.html.twig')) {
 	echo $twig->render($view . '.html.twig', $data);

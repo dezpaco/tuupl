@@ -7,20 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Tuupl: Color space converter</title>
-    <link href="/assets/images/favicon.ico" rel="icon" type="image/x-icon" />
+    {#
+     # Put a 32x32 favicon.ico file in root for IE,
+     # everything else uses the PNGs declared here.
+     #}
+    <link rel="icon" href="/assets/images/favicon.png" />
 
     <meta name="description" content="Color space converter for Hex and RGB." />
     <meta property="og:site_name" content="Tuupl">
     <meta property="og:description" content="Color space converter for Hex and RGB." />
     <meta property="og:title" content="Tuupl" />
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://tuupl.derrry.com" />
-    <meta property="og:image" content="http://tuupl.derrry.com/assets/images/og-img.png" />
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:image" content="{{ url }}/assets/images/og-img.png" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@dezpaco">
     <meta name="twitter:title" content="Tuupl">
     <meta name="twitter:description" content="Color space converter for Hex and RGB.">
-    <meta name="twitter:image" content="http://tuupl.derrry.com/assets/images/og-img.png">
+    <meta name="twitter:image" content="{{ url }}/assets/images/og-img.png">
 
     <link href="http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:400,600" rel="stylesheet">
     <link href="/assets/css/core.css" media="screen" rel="stylesheet"/>
@@ -31,10 +35,20 @@
      #}
     {% block assets_head_page %}{% endblock %}
 
-    <link href="/assets/images/apple-touch-icon.png" rel="apple-touch-icon" />
-    <link href="/assets/images/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
-    <link href="/assets/images/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
-    <link href="/assets/images/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <!-- iPad retina icon -->
+    <link href="/assets/images/apple-touch-icon-152.png" sizes="152x152" rel="apple-touch-icon">
+    <!-- iPad retina icon (iOS < 7) -->
+    <link href="/assets/images/apple-touch-icon-144.png" sizes="144x144" rel="apple-touch-icon">
+    <!-- iPad non-retina icon -->
+    <link href="/assets/images/apple-touch-icon-76.png" sizes="76x76" rel="apple-touch-icon">
+    <!-- iPad non-retina icon (iOS < 7) -->
+    <link href="/assets/images/apple-touch-icon-72.png" sizes="72x72" rel="apple-touch-icon">
+    <!-- iPhone 6 Plus icon -->
+    <link href="/assets/images/apple-touch-icon-180.png" sizes="120x120" rel="apple-touch-icon">
+    <!-- iPhone retina icon (iOS < 7) -->
+    <link href="/assets/images/apple-touch-icon-114.png" sizes="114x114" rel="apple-touch-icon">
+    <!-- iPhone non-retina icon (iOS < 7) -->
+    <link href="/assets/images/apple-touch-icon-57.png" sizes="57x57" rel="apple-touch-icon">
 {% endblock head %}
 </head>
 
