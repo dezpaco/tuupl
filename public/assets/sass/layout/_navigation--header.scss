@@ -1,6 +1,6 @@
-/*  
+/*
 +++++++++++++++++++++++++++++++++
-+++ LAYOUT: NAVIGATION HEADER +++ 
++++ LAYOUT: NAVIGATION HEADER +++
 +++++++++++++++++++++++++++++++++
 */
 
@@ -16,16 +16,16 @@
     z-index: 999999;
 
     @include mq($min: $break-devicemid) {
-        top: $gutter * 2; 
+        top: $gutter * 2;
     }
 
     @include mq($min: $break-tablet) {
-        top: $gutter * 3; 
+        top: $gutter * 3;
     }
 
     @if $use_mq {
         @include mq($min: $break-large) {
-            top: $gutter * 5; 
+            top: $gutter * 5;
         }
     }
 }
@@ -35,12 +35,10 @@
     color: $cream;
     display: block;
     font-size: font-size(18);
-    letter-spacing: .5em;
     text-transform: uppercase;
 }
 
 .strapline {
     color: rgba($white, .5);
     font-size: font-size(13);
-    //margin-top: .1em;
 }

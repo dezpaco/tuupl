@@ -1,6 +1,6 @@
-/*  
+/*
 ++++++++++++++++++++++++++
-+++ LAYOUT: CONVERSION +++ 
++++ LAYOUT: CONVERSION +++
 ++++++++++++++++++++++++++
 */
 
@@ -10,16 +10,16 @@
         padding-top: $gutter * 4;
 
         @include mq($min: $break-devicemid) {
-            padding-top: $gutter * 5; 
+            padding-top: $gutter * 5;
         }
 
          @include mq($min: $break-tablet) {
-            padding-top: $gutter * 6; 
+            padding-top: $gutter * 6;
         }
 
         @if $use_mq {
             @include mq($min: $break-large) {
-                padding-top: $gutter * 8; 
+                padding-top: $gutter * 8;
             }
         }
     }
@@ -41,7 +41,7 @@
         height: 144px;
         position: relative;
 
-        @include mq($min: $break-devicemid) {
+        @include mq($min: $break-phone) {
             height: 228px;
         }
 
