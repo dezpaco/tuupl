@@ -30,11 +30,5 @@ gulp.task('js', function() {
         .pipe(notify({ message: 'YKYM: <%= file.relative %>' }));
 });
 
-// Watch files for changes and do something
-gulp.task('watch', function() {
-    gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.convert, ['js']);
-});
-
 // Default task. This is for when you just type 'gulp' on the command line
 gulp.task('default', ['sass', 'js']);

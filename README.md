@@ -29,10 +29,6 @@ To build your sass files, you can run:
 
     $ gulp sass
 
-Or, to have Gulp watch your sass files and automatically compile them when a save is detected, use:
-
-    $ gulp watch
-
 ## Dependencies
 
 ### System dependencies
