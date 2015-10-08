@@ -29,6 +29,14 @@ To build your sass files, you can run:
 
     $ gulp sass
 
+To minify Convert.js, you can run:
+
+    $ gulp js
+
+Both of these Gulp tasks are part of the default:
+
+    $ gulp
+
 ## Dependencies
 
 ### System dependencies
