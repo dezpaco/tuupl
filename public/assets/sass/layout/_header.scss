@@ -6,11 +6,18 @@
 
 
 .header {
-    left: 0;
+    @include transform(translateY(-50%));
+    left: $gutter;
+    top: 50%;
     position: absolute;
-    text-align: center;
-    top: $gutter;
-    width: 100%;
+
+    @include mq($min: $break-height-min, $direction: min-height) {
+        @include transform(translateY(0));
+        left: 0;
+        text-align: center;
+        top: $gutter;
+        width: 100%;
+    }
 }
 
 .logo-base {
@@ -20,5 +27,4 @@
 
 .strapline {
     color: $grey8;
-    font-size: font-size(13);
 }

@@ -29,24 +29,16 @@
 // Media queries
 //=======================================
 
-@mixin mq($min: false, $max: false, $and: false) {
+@mixin mq($min: false, $and: false, $direction: min-width) {
     @if $use-mq == false {
         @content;
     } @else {
         @if $min and $and == false {
-            @media only screen and (min-width: break-point($min)) { @content };
+            @media only screen and ($direction: break-point($min)) { @content };
         }
 
         @if $min and $and {
-            @media only screen and (min-width: break-point($min)) and ($and) { @content };
-        }
-
-        @if $max and $and == false {
-            @media only screen and (max-width: break-point($max)) { @content };
-        }
-
-        @if $max and $and {
-            @media only screen and (max-width: break-point($max)) and ($and) { @content };
+            @media only screen and ($direction: break-point($min)) and ($and) { @content };
         }
     }
 }
@@ -58,7 +50,7 @@
 
 /*
  * Other values not set-up:
- * `flex-grow`, `flex-shrink`, `flex-basis`, `flex-flow` and `align-self`
+ * `flex-grow`, `flex-shrink`, `flex-basis` and `flex-flow`
  *
  * Read more: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
  */
@@ -83,25 +75,36 @@
     align-content: $arg;
 }
 
+@mixin align-self($arg: stretch) {
+    @if $arg == flex-start {
+        -ms-flex-item-align: start;
+    } @else if $arg == flex-end {
+        -ms-flex-item-align: end;
+    } @else if $arg == baseline {
+        -ms-flex-item-align: $arg;
+    } @else if $arg == stretch {
+        -ms-flex-item-align: $arg;
+    } @else {
+        -ms-flex-align: center;
+    }
+    -webkit-align-self: $arg;
+    align-self: $arg;
+}
+
 @mixin align-items($arg: stretch) {
     @if $arg == flex-start {
-        -moz-box-align: start;
         -ms-flex-align: start;
         -webkit-box-align: start;
     } @else if $arg == flex-end {
-        -moz-box-align: end;
         -ms-flex-align: end;
         -webkit-box-align: end;
     } @else if $arg == baseline {
-        -moz-box-align: $arg;
         -ms-flex-align: $arg;
         -webkit-box-align: $arg;
     } @else if $arg == stretch {
-        -moz-box-align: $arg;
         -ms-flex-align: $arg;
         -webkit-box-align: $arg;
     } @else {
-        -moz-box-align: center;
         -ms-flex-align: center;
         -webkit-box-align: center;
     }
@@ -110,19 +113,19 @@
 }
 
 @mixin flexbox {
-    @each $prefix in -moz-box, -ms-flexbox, -webkit-box, -webkit-flex, flex {
+    @each $prefix in -ms-flexbox, -webkit-box, -webkit-flex, flex {
         display: #{$prefix};
     }
 }
 
 @mixin flex($args: null) {
     @if $args == none {
-        @each $prefix in -moz-box-flex, -ms-flex, -webkit-flex, flex {
+        @each $prefix in -ms-flex, -webkit-flex, flex {
             #{$prefix}: $args;
         }
         -webkit-box-flex: 0;
     } @else {
-        @each $prefix in -moz-box-flex, -ms-flex, -webkit-box-flex, -webkit-flex, flex {
+        @each $prefix in -ms-flex, -webkit-box-flex, -webkit-flex, flex {
             #{$prefix}: $args;
         }
     }
@@ -131,10 +134,8 @@
 @mixin flex-direction($arg: row) {
     -ms-flex-direction: $arg;
     @if $arg == row or column {
-        -moz-box-direction: normal;
         -webkit-box-direction: normal;
     } @else if $arg == row-reverse or column-reverse {
-        -moz-box-direction: reverse;
         -webkit-box-direction: reverse;
     }
     @if $arg == row {
@@ -154,23 +155,18 @@
 
 @mixin justify-content($arg: flex-start) {
     @if $arg == flex-start {
-        -moz-box-pack: start;
         -ms-flex-pack: start;
         -webkit-box-pack: start;
     } @else if $arg == flex-end {
-        -moz-box-pack: end;
         -ms-flex-pack: end;
         -webkit-box-pack: end;
     } @else if $arg == space-between {
-        -moz-box-pack: justify;
         -ms-flex-pack: justify;
         -webkit-box-pack: justify;
     } @else if $arg == space-around {
-        -moz-box-pack: justify;
         -ms-flex-pack: distribute;
         -webkit-box-pack: justify;
     } @else {
-        -moz-box-pack: center;
         -ms-flex-pack: center;
         -webkit-box-pack: center;
     }
@@ -179,7 +175,7 @@
 }
 
 @mixin order($arg: null) {
-    @each $prefix in -moz-box-ordinal-group, -ms-flex-order, -webkit-box-ordinal-group, -webkit-order, order {
+    @each $prefix in -ms-flex-order, -webkit-box-ordinal-group, -webkit-order, order {
         #{$prefix}: $arg;
     }
 }

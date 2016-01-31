@@ -19,11 +19,16 @@ body {
 
 .wrapper {
     @include flexbox();
-    @include justify-content(center);
+    @include flex-direction(column);
     @include align-items(center);
+    @include justify-content(center);
     @include transition(background-color, 0.2s, ease);
     min-height: 100%;
     position: relative;
+
+    @include mq($min: $break-height-min, $direction: min-height) {
+        @include flex-direction(row);
+    }
 }
 
 h1 {

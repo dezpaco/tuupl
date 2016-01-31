@@ -6,11 +6,13 @@
 
 
 .conversion {
+    @include align-self(flex-end);
     background-color: $black;
+    height: 122px;
+    width: 216px;
 
-    @include mq($min: $break-devicemid) {
-        height: 122px;
-        width: 216px;
+    @include mq($min: $break-height-min, $direction: min-height) {
+        @include align-self(auto);
     }
 
     &-block {
