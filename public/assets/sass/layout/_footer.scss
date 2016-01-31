@@ -6,10 +6,10 @@
 
 
 .footer {
-    clear: both;
+    bottom: 0;
     display: none;
     height: $footer-height-smalldevice;
-    margin-top: -$footer-height-smalldevice;
+    left: 0;
     overflow: hidden;
     position: absolute;
     width: 100%;
@@ -21,12 +21,10 @@
 
     @include mq($min: $break-tablet) {
         height: $footer-height-largedevice;
-        margin-top: -$footer-height-largedevice;
     }
 
     @include mq($min: $break-medium) {
         height: $footer-height;
-        margin-top: -$footer-height;
     }
 }
 
