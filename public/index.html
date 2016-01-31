@@ -31,7 +31,7 @@
 
 <body>
 
-    <div class="wrapper">
+    <div id="viewer" class="wrapper">
 
         <header class="header">
 
@@ -40,28 +40,20 @@
 
         </header><!-- End .header -->
 
-        <div class="content">
-            <main class="content-align">
+        <div class="conversion">
 
-                <div class="conversion">
+            <form>
+                <div class="conversion-block first">
+                    <label for="hex" class="conversion-label">Hex</label>
+                    <input type="text" id="hex" class="conversion-input first" placeholder="Hex" autofocus="autofocus">
+                </div>
+                <div class="conversion-block">
+                    <label for="rgb" class="conversion-label">RGB</label>
+                    <input type="text" id="rgb" class="conversion-input last" placeholder="RGB">
+                </div>
+            </form>
 
-                    <div id="viewer" class="conversion-window"></div>
-
-                    <div class="conversion-values">
-
-                        <form>
-                            <label for="hex" class="conversion-label">Hex</label>
-                            <input type="text" id="hex" class="conversion-input first" placeholder="Hex" autofocus="autofocus">
-                            <label for="rgb" class="conversion-label">RGB</label>
-                            <input type="text" id="rgb" class="conversion-input last" placeholder="RGB">
-                        </form>
-
-                    </div><!-- End .conversion-values -->
-
-                </div><!-- End .conversion -->
-
-            </main><!-- End .content-align -->
-        </div><!-- End .content -->
+        </div><!-- End .conversion -->
 
     </div><!-- End .wrapper -->
 
@@ -71,9 +63,8 @@
 
     </footer><!-- End .footer -->
 
-    <script src="/assets/js/libs/jquery-2.1.1.min.js"></script>
     <!-- If you want to view the non-minified convert.js go to /assets/js/convert.js or https://github.com/dezpaco/tuupl -->
-    <script src="/assets/js/convert.min.js"></script>
+    <script src="/assets/js/convert.js"></script>
 
 </body>
 </html>

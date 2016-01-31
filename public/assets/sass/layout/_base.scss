@@ -18,6 +18,9 @@ body {
 }
 
 .wrapper {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
     min-height: 100%;
     overflow: hidden; /* For .content:after white bg */
     position: relative;

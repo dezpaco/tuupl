@@ -6,36 +6,23 @@
 
 
 .conversion {
-    @include box-sizing;
-    background-color: $white;
-    box-shadow: 2px 2px 8px rgba($primary, .5);
+    background-color: $black;
 
     @include mq($min: $break-devicemid) {
-        margin-left: auto;
-        margin-right: auto;
-        width: 272px;
+        height: 122px;
+        width: 216px;
     }
 
-    &-window {
-        background-color: $grey5;
-        height: 144px;
-        position: relative;
+    &-block {
+        border-top: 2px solid tint($black, 12%);
+        padding-bottom: $gutter / 3;
+        padding-left: $gutter / 2;
+        padding-right: $gutter / 2;
+        padding-top: $gutter / 3;
 
-        @include mq($min: $break-phone) {
-            height: 228px;
+        &.first {
+            border-top: none;
         }
-
-        @include mq($min: $break-tablet) {
-            height: 272px;
-        }
-    }
-
-    &-values {
-        border-top: 1px solid shade($white, 2%);
-        padding-bottom: $gutter / 2;
-        padding-left: $gutter / 4;
-        padding-right: $gutter / 4;
-        padding-top: $gutter / 4;
     }
 
     &-label {
@@ -44,31 +31,19 @@
 
     &-input {
         @extend %transition;
-        @include box-sizing;
-        border-bottom: 2px solid $greyE;
-        border-left: none;
-        border-radius: 0; // Override iOS Safari's rounded corners
-        border-right: none;
-        border-top: none;
-        font-size: font-size(14);
+        @include placeholder() {
+            color: $white;
+        }
+        border: none;
+        border-radius: 0; /* Override iOS Safari's rounded corners */
+        color: $white;
+        font-size: font-size(16);
         height: 44px;
-        margin-top: $gutter / 4;
         text-transform: lowercase;
         width: 100%;
 
         &:focus {
-            border-bottom-color: shade($greyE, 16%);
             outline: none;
-        }
-
-        @include mq($min: $break-tablet) {
-            height: 36px;
-            padding-left: $gutter / 3;
-            padding-right: $gutter / 3;
-        }
-
-        &.first {
-            margin-top: 0;
         }
     }
 }

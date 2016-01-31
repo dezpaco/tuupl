@@ -6,39 +6,19 @@
 
 
 .header {
-    $width: 192px;
-
-    @extend %clearfix-modern;
-    left: 50%;
-    margin-left: -($width / 2);
+    left: 0;
     position: absolute;
     text-align: center;
     top: $gutter;
-    width: $width;
-    z-index: 999999;
-
-    @include mq($min: $break-devicemid) {
-        top: $gutter * 2;
-    }
-
-    @include mq($min: $break-tablet) {
-        top: $gutter * 3;
-    }
-
-    @if $use_mq {
-        @include mq($min: $break-large) {
-            top: $gutter * 5;
-        }
-    }
+    width: 100%;
 }
 
 .logo-base {
-    color: $white;
     font-size: font-size(18);
     text-transform: uppercase;
 }
 
 .strapline {
-    color: rgba($white, .5);
+    color: $grey8;
     font-size: font-size(13);
 }
