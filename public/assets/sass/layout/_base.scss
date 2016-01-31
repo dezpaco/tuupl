@@ -21,8 +21,8 @@ body {
     @include flexbox();
     @include justify-content(center);
     @include align-items(center);
+    @include transition(background-color, 0.2s, ease);
     min-height: 100%;
-    overflow: hidden; /* For .content:after white bg */
     position: relative;
 }
 
