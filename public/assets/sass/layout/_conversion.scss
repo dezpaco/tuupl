@@ -9,10 +9,13 @@
     @include align-self(flex-end);
     background-color: $black;
     height: 122px;
-    width: 216px;
 
     @include mq($min: $break-height-min, $direction: min-height) {
         @include align-self(auto);
+    }
+
+    @include mq($min: $break-devicemid) {
+        width: 216px;
     }
 
     &-block {
@@ -33,9 +36,6 @@
 
     &-input {
         @extend %transition;
-        @include placeholder() {
-            color: $white;
-        }
         border: none;
         border-radius: 0; /* Override iOS Safari's rounded corners */
         color: $white;
