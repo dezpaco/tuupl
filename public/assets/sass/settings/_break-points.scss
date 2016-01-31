@@ -7,15 +7,17 @@
 
 // Size is in px but not including units because of breakPoint @function calculation in media query @mixin
 
-$break-phone: 320;
-$break-devicemid: 480;
-$break-deviceupper: 620;
-$break-tablet: 748;
-$break-tabletupper: 800;
-$break-medium: 980;
-$break-intermediate: 1260;
-$break-sublarge: 1400;
-$break-large: 1580;
-$break-xlarge: 1800;
+$break-base: 240; // 15em (Equivalent to small phone)
+$break-phone: 320; // 20em
+$break-devicemid: 480; // 30em
+$break-deviceupper: 620; // 38.75em
+$break-tablet: 748; // 46.75em
+$break-tabletupper: 800; // 50em
+$break-medium: 980; // 61.25em
+$break-mediumupper: 1120; // 70em
+$break-intermediate: 1260; // 78.75em
+$break-sublarge: 1400; // 87.5em
+$break-large: 1580; // 98.75em
+$break-xlarge: 1800; // 112.5em
 
 $break-height-min: 260;
