@@ -1,6 +1,8 @@
+'use strict';
+
 // Load plugins
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     notify = require('gulp-notify'),
     uglify = require('gulp-uglify'),
     rename = require("gulp-rename");
@@ -13,12 +15,14 @@ var paths = {
     css: 'public/assets/css'
 };
 
+
 // Styles
 gulp.task('sass', function() {
-    return gulp.src(paths.sass)
-        .pipe(sass({ style: 'compressed' }))
-        .pipe(gulp.dest(paths.css))
-        .pipe(notify({ message: 'YKYM: <%= file.relative %>' }));
+  gulp.src(paths.sass)
+    .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(gulp.dest(paths.css))
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(notify({ message: 'YKYM: <%= file.relative %>' }));
 });
 
 // Scripts
