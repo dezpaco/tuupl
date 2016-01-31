@@ -6,13 +6,13 @@
 
 
 .header {
-    @include transform(translateY(-50%));
+    transform: translateY(-50%);
     left: $gutter;
     top: 50%;
     position: absolute;
 
     @include mq($min: $break-height-min, $direction: min-height) {
-        @include transform(translateY(0));
+        transform: translateY(0);
         left: 0;
         text-align: center;
         top: $gutter;

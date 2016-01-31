@@ -31,24 +31,10 @@
  * $direction-old is from the origin e.g. `left top`
  * $direction-new is to the end e.g. `to right bottom`
  */
-@mixin linear-gradient($direction-old: left, $direction-new: to right, $colors: null) {
-    background-image: -webkit-linear-gradient($direction-old, $colors);
-    background-image: -webkit-linear-gradient($direction-new, $colors);
-    background-image: linear-gradient($direction-new, $colors);
+@mixin linear-gradient($direction: to right, $colors: null) {
+    background-image: linear-gradient($direction, $colors);
 }
 
 @mixin radial-gradient($features: center center, $colors: null) {
-    background-image: -webkit-radial-gradient($features, $colors);
     background-image: radial-gradient($features, $colors);
-}
-
-
-//=======================================
-// Filter
-//=======================================
-
-@mixin filter($properties) {
-    @each $prefix in -webkit-filter, filter {
-        #{$prefix}: $properties;
-    }
 }
