@@ -16,7 +16,7 @@ var autoprefixerOptions = {
 var paths = {
     convert: 'public/assets/js/convert.js',
     js: 'public/assets/js',
-    sass: 'public/assets/sass/core.scss',
+    sass: 'public/assets/sass/*.scss',
     css: 'public/assets/css'
 };
 
