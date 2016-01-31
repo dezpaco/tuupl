@@ -1,5 +1,4 @@
 (function() {
-    
     /*
      * isHex checks for both 3-value and 6-value Hex codes.
      */
@@ -14,22 +13,38 @@
     isRgb = /^[rgba]*\(?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b/;
 
     var Convert = {
-
         init: function() {
-            this.inputHex = $( '#hex' );
-            this.inputRgb = $( '#rgb' );
-            this.viewer = $( '#viewer' );
-            this.bindEvents();
+            this.parent = document.querySelector('#convert');
+            this.hex = document.querySelector('#hex');
+            this.rgb = document.querySelector('#rgb');
+            this.viewer = document.querySelector('#viewer');
+
+            // 'this' will be used by handleEvent, below.
+            this.parent.addEventListener('input', this, false);
         },
 
         /*
-         * Get the data from the Hex and RGB input elements and convert the values inputted.
-         * The $.proxy() is used so the `this` context for e.g. `this.showHexResult` is from the
-         * Convert object scope rather than `this.inputHex`.
+         * addEventListener looks for handleEvent.
+         * Only execute if a child element of the parent
+         * (i.e. not the parent). Then for each of the two
+         * color spaces use the appopriate methods.
          */
-        bindEvents: function() {
-            this.inputHex.on( 'blur input', $.proxy( this.showHexResult, this ) );
-            this.inputRgb.on( 'blur input', $.proxy( this.showRgbResult, this ) );
+        handleEvent: function(evt) {
+            if (evt.target !== evt.currentTarget) {
+                var colorspace = evt.target.id;
+
+                switch(colorspace) {
+                    case 'hex':
+                        this.showHexResult();
+                        break;
+
+                    case 'rgb':
+                        this.showRgbResult();
+                        break;
+                }
+            }
+
+            evt.stopPropagation();
         },
 
         /*
@@ -39,8 +54,8 @@
          * viewer will keep the last defined color so it doesn't "flicker" all the time.
          */
         showHexResult: function() {
-            this.evalHex() ? this.inputRgb.val( this.evalHex() ) : this.inputRgb.val( '' );
-            this.viewer.css( 'background-color', this.evalHex() );
+            this.evalHex() ? this.rgb.value = this.evalHex() : this.rgb.value = '';
+            this.viewer.style.backgroundColor = this.evalHex();
         },
 
         /*
@@ -50,36 +65,36 @@
          * viewer will keep the last defined color so it doesn't "flicker" all the time.
          */
         showRgbResult: function() {
-            this.evalRgb() ? this.inputHex.val( this.evalRgb() ) : this.inputHex.val( '' );
-            this.viewer.css( 'background-color', this.evalHex() );
+            this.evalRgb() ? this.hex.value = this.evalRgb() : this.hex.value = '';
+            this.viewer.style.backgroundColor = this.evalHex();
         },
 
         /*
          * Output the value typed into the Hex input element.
          */
-        readHex: function() {
-            return this.inputHex.val();
+        hexValue: function() {
+            return this.hex.value;
         },
 
         /*
          * Output the value typed into the RGB input element.
          */
-        readRgb: function() {
-            return this.inputRgb.val();
+        rgbValue: function() {
+            return this.rgb.value;
         },
 
         /*
          * Test if the value entered is a valid Hex color code.
          */
         evalHex: function() {
-            return isHex.test( this.readHex() ) ? this.convertHex() : void 0;
+            return isHex.test(this.hexValue()) ? this.convertHex() : void 0;
         },
 
         /*
          * Test if the value entered is a valid RGB color code.
          */
-        evalRgb: function() {            
-            return isRgb.test( this.readRgb() ) ? this.convertRgb() : void 0;
+        evalRgb: function() {
+            return isRgb.test(this.rgbValue()) ? this.convertRgb() : void 0;
         },
 
         /*
@@ -93,9 +108,9 @@
              * e.g. #112233 becomes 11, 22, 33.
              */
             var split = /^#?([a-fA-F\d]{2})([a-fA-F\d]{2})([a-fA-F\d]{2})$/,
-                hex = this.expandHex().match( split );
+                hex = this.expandHex().match(split);
 
-            return 'rgb(' + parseInt( hex[1], 16 ) + ',' + parseInt( hex[2], 16 ) + ',' + parseInt( hex[3], 16 ) + ')';
+            return 'rgb(' + parseInt(hex[1], 16) + ',' + parseInt(hex[2], 16) + ',' + parseInt(hex[3], 16) + ')';
         },
 
         /*
@@ -104,7 +119,7 @@
          */
         expandHex: function() {
             var isShorthand = /^#?([a-fA-F\d])([a-fA-F\d])([a-fA-F\d])$/i,
-                hex = this.readHex().replace( isShorthand, function( m, r, g, b ) {
+                hex = this.hexValue().replace(isShorthand, function(m, r, g, b) {
                     return r + r + g + g + b + b;
                 });
 
@@ -122,25 +137,25 @@
          * zeroes once the leading 1 is stripped off using slice().
          */
         convertRgb: function() {
-            var splitRgb = isRgb.exec( this.readRgb() ).map( this.returnInt ),
+            var splitRgb = isRgb.exec(this.rgbValue()).map(this.returnInt),
                 r = splitRgb[1],
                 g = splitRgb[2],
                 b = splitRgb[3];
 
-            return '#' + ( ( 1 << 24 ) + ( r << 16 ) + ( g << 8 ) + b ).toString( 16 ).slice( 1 );
+            return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
         },
 
         /*
          * parseInt is often used with one argument, but takes two. The second being the radix
-         * to the callback function, Array.prototype.map passes 3 arguments: 
+         * to the callback function, Array.prototype.map passes 3 arguments:
          * the element, the index, the array
          * The third argument is ignored by parseInt, but not the second one,
-         * hence the possible confusion of using .map( parseInt ) and getting NaN.
+         * hence the possible confusion of using .map(parseInt) and getting NaN.
          * More here:
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
          */
-        returnInt: function( element ) {
-            return parseInt( element, 10 );
+        returnInt: function(element) {
+            return parseInt(element, 10);
         }
     }
 
