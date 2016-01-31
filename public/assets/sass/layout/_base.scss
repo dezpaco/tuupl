@@ -1,0 +1,37 @@
+/*
+++++++++++++++++++++
++++ LAYOUT: BASE +++
+++++++++++++++++++++
+*/
+
+
+:root, body {
+    height: 100%;
+}
+
+body {
+    @include antialiase();
+    font-size: $base-size + em;
+    -webkit-font-feature-settings: 'liga', 'kern', 'calt' 0;
+    font-feature-settings: 'liga', 'kern', 'calt' 0;
+    -webkit-text-size-adjust: 100%; /* Stop resizing text on landscape. */
+}
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden; /* For .content:after white bg */
+    position: relative;
+}
+
+h1 {
+    @extend %h1;
+}
+
+// Also, textsize for li and table elements in .primary
+p {
+    @extend %p;
+}
+
+a {
+    color: $black;
+}

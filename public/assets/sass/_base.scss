@@ -1,7 +1,7 @@
-/*  
-++++++++++++ 
-+++ BASE +++ 
-++++++++++++ 
+/*
+++++++++++++
++++ BASE +++
+++++++++++++
 */
 
 
@@ -9,28 +9,22 @@
 // Settings
 //=======================================
 
-@import "settings/_break-points";
-@import "settings/_layout";
-@import "settings/_palette";
-@import "settings/_sprites";
-@import "settings/_toolkit";
-@import "settings/_typography";
+@import 'settings/_break-points';
+@import 'settings/_layout';
+@import 'settings/_palette';
+@import 'settings/_typography';
+@import 'settings/_toolkit';
 
 
 //=======================================
 // Helpers
 //=======================================
 
-@import "helpers/_placeholders";
-@import "helpers/_settings";
-@import "helpers/_layout";
-@import "helpers/_typography";
+@import 'helpers/_placeholders';
+@import 'helpers/_settings';
+@import 'helpers/_layout';
+@import 'helpers/_typography';
 
-@import "helpers/_animation";
-@import "helpers/_background";
-@import "helpers/_buttons";
-@import "helpers/_center";
-@import "helpers/_clearfix";
-@import "helpers/_color";
-@import "helpers/_conditionals";
-@import "helpers/_forms";
+@import 'helpers/_animation';
+@import 'helpers/_clearfix';
+@import 'helpers/_color';

@@ -1,7 +1,7 @@
-/*  
-+++++++++++++++++++++++++++ 
-+++ HELPERS: TYPOGRAPHY +++ 
-+++++++++++++++++++++++++++ 
+/*
++++++++++++++++++++++++++++
++++ HELPERS: TYPOGRAPHY +++
++++++++++++++++++++++++++++
 */
 
 
@@ -24,17 +24,6 @@
 
 
 //=======================================
-// Hyphens
-//=======================================
-
-@mixin hyphens($setting: auto) {
-    @each $prefix in '-moz-hyphens', '-webkit-hyphens', 'hyphens' {
-        #{$prefix}: $setting;
-    }
-}
-
-
-//=======================================
 // Placeholder
 //=======================================
 
@@ -47,63 +36,17 @@
 
 
 //=======================================
-// Selection
+// Antialiase
 //=======================================
 
-// This is the highlight colour used with the cursor
-@mixin selection($background: null, $color: null) {
-    @each $prefix in '::-moz-selection', '::selection' {
-        #{$prefix} {
-            background: $background;
-            color: $color;
-        }
-    }
-}
-
-
-//=======================================
-// Underlines
-//=======================================
-
-@mixin underline($background: null, $color: null, $clear-descenders: null, $distance: null, $width: null, $extend: null) {
-    $background: if($background != null, $background, toolkit-get('underline background'));
-    $color: if($color != null, $color, toolkit-get('underline color'));
-    $clear-descenders: if($clear-descenders != null, $clear-descenders, toolkit-get('underline clear descenders'));
-    $distance: if($distance != null, $distance, toolkit-get('underline distance'));
-    $width: if($width != null, $width, toolkit-get('underline width'));
-    $extend: if($extend != null, $extend, toolkit-get('underline extend'));
-
-    $PX: .0625em;
-
-    @include underline-core($extend);
-
-    @include linear-gradient($direction-old: bottom, $direction-new: to top, $colors: ($background 75%, $color 75%));
-
-    background-size: (2 * $PX) ((1 + $width) * $PX);
-    background-position: 0 (($width) * $PX) + $distance;
-
-    @if $clear-descenders {
-        text-shadow: (1 * $PX) (1 * $PX) 0 $background, (-1 * $PX) 0 0 $background;
-    }
-}
-
-@mixin underline-core($extend: null) {
-    $extend: if($extend != null, $extend, toolkit-get('underline extend'));
-
-    @if $extend {
-        @include dynamic-extend('underline') {
-            @include underline-core(false);
-        }
+@mixin antialiase($type: true) {
+    @if $type == true {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
     @else {
-        text-decoration: none;
-        background-repeat: repeat-x;
-
-        @include ie-lte(8) {
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
     }
 }
 
@@ -112,55 +55,12 @@
 // Defaults
 //=======================================
 
-%font-altheader {
-    font-family: $font-altheader;
-    font-weight: 700;
-    -webkit-font-smoothing: antialiased;
-}
-
 %font-body {
     font-family: $font-body;
 }
 
-%font-code {
-    font-family: $font-code;
-}
-
 %font-header {
     font-family: $font-header;
-    font-weight: 600;
-    -webkit-font-smoothing: antialiased;
-}
-
-%font-numeral {
-    font-family: $font-numeral;
-}
-
-%font-picto {
-    @extend %transition;
-    display: inline-block;
-    font-family: $font-picto;
-    font-size: 16px;
-    font-style: normal;
-    line-height: 1;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-%font-picto-mega {
-    @extend %font-picto;
-    font-size: 32px;
-}
-
-%font-social {
-    font-family: $font-social;
-    font-style: normal;
-}
-
-%fontweight-heavy {
-    font-weight: 600;
-    -webkit-font-smoothing: antialiased;
 }
 
 
@@ -171,74 +71,13 @@
 %heading-settings {
     @extend %font-header;
     line-height: 1.2;
-    -moz-font-feature-settings: "kern=1";
-    -ms-font-feature-settings: "kern" 1;
-    text-rendering: optimizeLegibility;
 }
 
 %h1 {
     @extend %heading-settings;
-    font-size: font-size(26);
-
-    @include mq($min: $break-devicemid) {
-        font-size: font-size(36);
-    }
-
-    @include mq($min: $break-tablet) {
-        font-size: font-size(48);
-    }
-}
-
-%h2 {
-    @extend %heading-settings;
     font-size: font-size(18);
-
-    @include mq($min: $break-tablet) {
-        font-size: font-size(24);
-    }
-} 
-
-%h3 {
-    @extend %heading-settings;
-    font-size: font-size(16);
-
-    @include mq($min: $break-tablet) {
-        font-size: font-size(18);
-    }
-} 
-
-%h4 {
-    @extend %heading-settings;
-    font-size: font-size(15);
 }
 
-%h5 {
-    @extend %heading-settings;
-    font-size: font-size(14);
-}
-
-%h6 {
-    @extend %heading-settings;
-    font-size: font-size(13);
-}
-
-// Also, textsize for li and table elements in .primary
 %p {
     font-size: font-size(16);
-    line-height: 1.3;
-
-    @include mq($min: $break-tablet) {
-        font-size: font-size(18);
-    }
-}
-
-// Anchor text
-%anchor-text {
-    @extend %transition;
-    color: $primary;
-    
-    &:hover {
-        color: darken($primary, 4%);
-        text-decoration: underline;
-    }
 }

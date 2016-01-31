@@ -1,22 +1,15 @@
-/*  
+/*
 ++++++++++++++++++
-+++ BASE: CORE +++ 
++++ BASE: CORE +++
 ++++++++++++++++++
 */
 
 
 @import '_base';
 
-
-// RESETS
-@import 'layout/_normalize';
-@import 'layout/_resets';
-
-// VIEWS
-@import 'layout/_core';
-@import 'layout/_content--layout';
-@import 'layout/_navigation--header';
-@import 'layout/_navigation--footer';
-//@import 'layout/_primary';
+@import 'layout/_resets--sanitize-cutdown';
+@import 'layout/_base';
+@import 'layout/_content';
+@import 'layout/_header';
+@import 'layout/_footer';
 @import 'layout/_conversion';
-@import 'layout/_error';

@@ -1,6 +1,6 @@
-/*  
+/*
 ++++++++++++++++++++++++++++++
-+++ LAYOUT: CONTENT LAYOUT +++ 
++++ LAYOUT: CONTENT LAYOUT +++
 ++++++++++++++++++++++++++++++
 */
 
@@ -9,8 +9,13 @@
     @extend %clearfix-modern;
     @extend %page-layout;
     padding-bottom: $footer-height-smalldevice + ($gutter * 2);
+    padding-top: $gutter * 4;
     position: relative;
     z-index: 800;
+
+    @include mq($min: $break-devicemid) {
+        padding-top: $gutter * 5;
+    }
 
     @include mq($min: $break-deviceupper) {
         padding-bottom: $footer-height-smalldevice + ($gutter * 3);
@@ -18,12 +23,17 @@
 
     @include mq($min: $break-tablet) {
         padding-bottom: $footer-height-largedevice + ($gutter * 4);
+        padding-top: $gutter * 6;
     }
 
     @include mq($min: $break-medium) {
         padding-bottom: $footer-height + ($gutter * 4);
         padding-left: $gutter * 2;
         padding-right: $gutter * 2;
+    }
+
+    @include mq($min: $break-large) {
+        padding-top: $gutter * 8;
     }
 }
 

@@ -1,18 +1,20 @@
 /*
-+++++++++++++++++++++++++++++++++
-+++ LAYOUT: NAVIGATION HEADER +++
-+++++++++++++++++++++++++++++++++
+++++++++++++++++++++++
++++ LAYOUT: HEADER +++
+++++++++++++++++++++++
 */
 
 
 .header {
+    $width: 192px;
+
     @extend %clearfix-modern;
     left: 50%;
-    margin-left: -72px;
+    margin-left: -($width / 2);
     position: absolute;
     text-align: center;
     top: $gutter;
-    width: 144px;
+    width: $width;
     z-index: 999999;
 
     @include mq($min: $break-devicemid) {
@@ -30,10 +32,8 @@
     }
 }
 
-/*a*/.logo-base {
-    @extend %font-altheader;
-    color: $cream;
-    display: block;
+.logo-base {
+    color: $white;
     font-size: font-size(18);
     text-transform: uppercase;
 }

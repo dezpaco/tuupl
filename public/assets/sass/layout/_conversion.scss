@@ -5,26 +5,6 @@
 */
 
 
-/*body*/#home {
-    .content {
-        padding-top: $gutter * 4;
-
-        @include mq($min: $break-devicemid) {
-            padding-top: $gutter * 5;
-        }
-
-         @include mq($min: $break-tablet) {
-            padding-top: $gutter * 6;
-        }
-
-        @if $use_mq {
-            @include mq($min: $break-large) {
-                padding-top: $gutter * 8;
-            }
-        }
-    }
-}
-
 .conversion {
     @include box-sizing;
     background-color: $white;
@@ -63,7 +43,6 @@
     }
 
     &-input {
-        @extend %font-header;
         @extend %transition;
         @include box-sizing;
         border-bottom: 2px solid $greyE;

@@ -28,8 +28,8 @@
 
 /*
  * $colours should be a comma separated list
- * $direction_old is from the origin e.g. `left top`
- * $direction_new is to the end e.g. `to right bottom`
+ * $direction-old is from the origin e.g. `left top`
+ * $direction-new is to the end e.g. `to right bottom`
  */
 @mixin linear-gradient($direction-old: left, $direction-new: to right, $colors: null) {
     background-image: -webkit-linear-gradient($direction-old, $colors);
@@ -40,4 +40,15 @@
 @mixin radial-gradient($features: center center, $colors: null) {
     background-image: -webkit-radial-gradient($features, $colors);
     background-image: radial-gradient($features, $colors);
+}
+
+
+//=======================================
+// Filter
+//=======================================
+
+@mixin filter($properties) {
+    @each $prefix in -webkit-filter, filter {
+        #{$prefix}: $properties;
+    }
 }
