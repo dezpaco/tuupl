@@ -1,10 +1,7 @@
 .DS_Store
 composer.phar
-vendor/
 .sass-cache
 node_modules
 public/assets/css/*.css
 config.codekit
-public/.htaccess
-templates/helpers/analytics.js.twig
 public/assets/js/convert.min.js
