@@ -4,6 +4,8 @@
 
 Tuupl is a simple color space converter for Hex and RGB. Enter a Hex code and the app will show you the corresponding RGB value, and *vice versa*.
 
+View a working version at [https://tuupl.com](https://tuupl.com).
+
 A few points to note:
 * Made the RGB input fuzzy in case pasted codes have mistakes, it will still read it
 * The JavaScript will need a polyfill for addEventListener if you want to use it with IE 8 (or older)
