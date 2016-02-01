@@ -21,6 +21,7 @@
 
             // 'this' will be used by handleEvent, below.
             this.parent.addEventListener('input', this, false);
+            this.parent.addEventListener('focusout', this, false);
         },
 
         /*
