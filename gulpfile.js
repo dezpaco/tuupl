@@ -54,6 +54,7 @@ gulp.task('html', function() {
         .pipe(rename(paths.htmlIndex))
         .pipe(htmlmin(minifyOptions))
         .pipe(gulp.dest(paths.html))
+        .pipe(notify({ message: 'YKYM: <%= file.relative %>' }));
 });
 
 // Default task. This is for when you just type 'gulp' on the command line
