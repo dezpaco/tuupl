@@ -6,16 +6,24 @@ var sass = require('gulp-sass');
 var notify = require('gulp-notify');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
+var htmlmin = require('gulp-htmlmin');
 
 var autoprefixerOptions = {
     browsers: ['last 2 versions'],
     cascade: false
 };
 
+var minifyOptions = {
+    collapseWhitespace: true
+};
+
 // Set the default paths for reusability
 var paths = {
     convert: 'public/assets/js/convert.js',
+    minify: 'public/_base.html',
     js: 'public/assets/js',
+    html: 'public',
+    htmlIndex: 'index.html',
     sass: 'public/assets/sass/*.scss',
     css: 'public/assets/css'
 };
@@ -40,5 +48,13 @@ gulp.task('js', function() {
         .pipe(notify({ message: 'YKYM: <%= file.relative %>' }));
 });
 
+// Layout
+gulp.task('html', function() {
+    gulp.src(paths.minify)
+        .pipe(rename(paths.htmlIndex))
+        .pipe(htmlmin(minifyOptions))
+        .pipe(gulp.dest(paths.html))
+});
+
 // Default task. This is for when you just type 'gulp' on the command line
-gulp.task('default', ['sass', 'js']);
+gulp.task('default', ['sass', 'js', 'html']);

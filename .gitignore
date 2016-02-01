@@ -4,3 +4,4 @@ node_modules
 public/assets/css/*.css
 config.codekit
 public/assets/js/convert.min.js
+public/index.html

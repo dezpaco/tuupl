@@ -9,4 +9,7 @@ gulp-js:
 gulp-sass:
 	gulp sass
 
-install: npm gulp-sass gulp-js
+gulp-html:
+	gulp html
+
+install: npm gulp-sass gulp-js gulp-html

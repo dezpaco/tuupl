@@ -17,6 +17,8 @@ A few points to note:
 
 Then setup your webserver to point the document root to the `public/` directory. `index.html` within that directory should be the `DirectoryIndex`.
 
+The html file to use for working on the project is `_base.html`. This will be minified (and renamed) to `index.html` when you run either of the two commands, `gulp` or `gulp html`.
+
 ## Gulp
 
 You can automate the compiling of `sass` with [Gulp](http://gulpjs.com/), which is an automated task runner.
@@ -31,7 +33,11 @@ To minify Convert.js, you can run:
 
     $ gulp js
 
-Both of these Gulp tasks are part of the default:
+To minify `_base.html` to `index.html`, you can run:
+
+    $ gulp html
+
+All three of these Gulp tasks are part of the default:
 
     $ gulp
 
