@@ -2,7 +2,7 @@
     /*
      * isHex checks for both 3-value and 6-value Hex codes.
      */
-    var isHex = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
+    var isHex = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
     /*
      * rgbPattern will ignore the rgba(,0.2); part of the code
      * and will also check if values 0-255.
@@ -10,7 +10,7 @@
      * 01,01,02 - does this matter?
      * 12,34,5 6 passes as 12,34,5
      */
-    isRgb = /^[rgba]*\(?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b/;
+    var isRgb = /^[rgba]*\(?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b,\s?\b([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b/;
 
     var Convert = {
         init: function() {
@@ -108,8 +108,8 @@
              * Split the six digit Hex into three two digit pairs
              * e.g. #112233 becomes 11, 22, 33.
              */
-            var split = /^#?([a-fA-F\d]{2})([a-fA-F\d]{2})([a-fA-F\d]{2})$/,
-                hex = this.expandHex().match(split);
+            var split = /^#?([a-fA-F\d]{2})([a-fA-F\d]{2})([a-fA-F\d]{2})$/;
+            var hex = this.expandHex().match(split);
 
             return 'rgb(' + parseInt(hex[1], 16) + ',' + parseInt(hex[2], 16) + ',' + parseInt(hex[3], 16) + ')';
         },
@@ -119,8 +119,8 @@
          * the standard six digit number. If already six digit, output unaltered.
          */
         expandHex: function() {
-            var isShorthand = /^#?([a-fA-F\d])([a-fA-F\d])([a-fA-F\d])$/i,
-                hex = this.hexValue().replace(isShorthand, function(m, r, g, b) {
+            var isShorthand = /^#?([a-fA-F\d])([a-fA-F\d])([a-fA-F\d])$/i;
+            var hex = this.hexValue().replace(isShorthand, function(m, r, g, b) {
                     return r + r + g + g + b + b;
                 });
 
@@ -138,10 +138,10 @@
          * zeroes once the leading 1 is stripped off using slice().
          */
         convertRgb: function() {
-            var splitRgb = isRgb.exec(this.rgbValue()).map(this.returnInt),
-                r = splitRgb[1],
-                g = splitRgb[2],
-                b = splitRgb[3];
+            var splitRgb = isRgb.exec(this.rgbValue()).map(this.returnInt);
+            var r = splitRgb[1];
+            var g = splitRgb[2];
+            var b = splitRgb[3];
 
             return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
         },
