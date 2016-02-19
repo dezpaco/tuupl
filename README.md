@@ -17,25 +17,27 @@ A few points to note:
     $ cd tuupl
     $ make install
 
+`make install` will configure the project with the dependencies needed to run Gulp. Then it will run the Gulp tasks listed below.
+
 Then setup your webserver to point the document root to the `public/` directory. `index.html` within that directory should be the `DirectoryIndex`.
 
 The html file to use for working on the project is `_base.html`. This will be minified (and renamed) to `index.html` when you run either of the two commands, `gulp` or `gulp html`.
 
 ## Gulp
 
-You can automate the compiling of `sass` with [Gulp](http://gulpjs.com/), which is an automated task runner.
+You can automate the compiling of these project files with the JavaScript task runner, [Gulp](http://gulpjs.com/).
 
 ### Using Gulp
 
-To build your sass files, you can run:
+To build your sass files, run:
 
     $ gulp sass
 
-To minify Convert.js, you can run:
+To minify Convert.js, run:
 
     $ gulp js
 
-To minify `_base.html` to `index.html`, you can run:
+To minify `_base.html` to `index.html`, run:
 
     $ gulp html
 
@@ -50,15 +52,12 @@ All three of these Gulp tasks are part of the default:
 You’ll need:
 
  * Node.js - [http://nodejs.org/](http://nodejs.org/)
- * Ruby
- * Rubygems
 
 Depending on your system, you may need to prefix these commands with `sudo`.
 
- * `gem install sass`
  * `npm install gulp -g`
 
-Make sure that you have `NODE_PATH` setup to point to your node install, and that the npm module path is in your `PATH` directory. These may differ from system to system.
+Make sure you have `NODE_PATH` setup to point to your node install, and that the npm module path is in your `PATH` directory. These may differ from system to system.
 
 For `fish` shell, you can add this to your `~/.config/fish/fish.config`:
 
@@ -67,6 +66,6 @@ For `fish` shell, you can add this to your `~/.config/fish/fish.config`:
 
 ### Project dependencies
 
-Install Gulp dependencies. Run this command from the root of the project directory:
+Install Gulp dependencies with NPM. Run the command below from the root of the project directory. If you ran `make install` during the project setup then these dependencies should already be available.
 
     $ npm install
